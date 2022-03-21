@@ -1,0 +1,22 @@
+.footer {
+  background-color: #262626;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+}
+
+footer{
+  margin-top: 2rem;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.footer a {
+  color: white;
+  margin-left: 0.75rem;
+}

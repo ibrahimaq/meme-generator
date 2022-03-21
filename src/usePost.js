@@ -16,7 +16,7 @@ const usePost = () => {
       }
       const res = await postRequest.json();
       const data = res;
-      navigate("/completed-meme",{state: data});
+      navigate("/meme-generator/completed-meme",{state: data});
     } catch (err) {
       console.log(err);
     }

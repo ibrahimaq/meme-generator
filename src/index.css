@@ -1,3 +1,13 @@
+html{
+  position: relative;
+  min-height: 100%;
+}
+
 body {
     font-family: Roboto, Helvetica, Arial, sans-serif;
+    /* background: rgb(208,196,117); */
+/* background: linear-gradient(90deg, rgba(208,196,117,1) 40%, rgba(201,194,149,1) 60%); */
+  background-color: #2B2D42;
+  height: 100%;
   }
+

@@ -1,7 +1,13 @@
 import { useState } from "react";
 import usePost from "../../usePost";
 import styles from "./styles.module.css";
-import { useNavigate } from "react-router-dom";
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBInput,
+} from "mdb-react-ui-kit";
 
 const Modal = ({ setIsModal, selectedMemeData }) => {
   //use box count for selected meme and initialise state with an array of n boxes
@@ -30,6 +36,7 @@ const Modal = ({ setIsModal, selectedMemeData }) => {
   //////// SUBMIT /////////
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     ///creating new form and populating it with details
     const formData = new FormData();
     formData.append("template_id", selectedMemeData.id);
@@ -41,40 +48,65 @@ const Modal = ({ setIsModal, selectedMemeData }) => {
 
     //posting request to API
     getMeme(formData);
+    
   };
+
 
   return (
     <div className={styles.modalDarkBg}>
       <div className={styles.modal}>
-        <button onClick={() => setIsModal(false)}>X</button>
-        <div className={styles.content}>
-          <img
-            src={selectedMemeData.url}
-            alt={selectedMemeData.name}
-            width="250px"
-          />
-
-          {/* {right panel} */}
-          <div className={styles.rightPanel}>
-            <form onSubmit={handleSubmit}>
-              {Array.from(Array(selectedMemeData.box_count), (field, index) => (
-                <input
-                  type="text"
-                  key={index}
-                  id={selectedMemeData.id}
-                  onChange={(e) => {
-                    handleChange(e, index);
-                  }}
-                />
-              ))}
-              {!isFetching ? (
-                <button type="submit">Make my meme</button>
-              ) : (
-                <button>...baking</button>
-              )}
-            </form>
-          </div>
+        <div className={styles.closeIconContainer}>
+          <MDBBtn
+            className={styles.closeIcon}
+            onClick={() => setIsModal(false)}
+          >
+            X
+          </MDBBtn>
         </div>
+
+        <MDBContainer>
+          <MDBRow className="py-4">
+            <MDBCol sm="6" className="text-center">
+              <h3>{selectedMemeData.name}</h3>
+              <img
+                src={selectedMemeData.url}
+                alt={selectedMemeData.name}
+                className="figure-img img-fluid z-depth-1"
+              />
+            </MDBCol>
+            {/* {right panel} */}
+            <MDBCol sm="6">
+              <div className={styles.rightPanel}>
+                <form onSubmit={handleSubmit}>
+                  <p className="text-center">Fill out at least one box before generating meme</p>
+                  <div className={styles.inputGroup}>
+                    {Array.from(
+                      Array(selectedMemeData.box_count),
+                      (field, index) => (
+                        <MDBInput
+                          label={`Textbox ${index + 1}`}
+                          type="text"
+                          required
+                          key={index}
+                          id={selectedMemeData.id}
+                          className="my-1 my-sm-4 my-md-5"
+                          onChange={(e) => {
+                            handleChange(e, index);
+                          }}
+                        />
+                      )
+                    )}
+                  </div>
+                  {!isFetching ? (
+                    <MDBBtn className={styles.submitBtn} type="submit">Make my meme</MDBBtn>
+                  ) : (
+                    <MDBBtn className={styles.submitBtn}>...baking</MDBBtn>
+                  )}
+                </form>
+              </div>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
       </div>
     </div>
   );
