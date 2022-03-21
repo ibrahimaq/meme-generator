@@ -1,6 +1,5 @@
-
-img{
-    max-height: 400px;
+img {
+  max-height: 400px;
 }
 
 /* .iconsContainer{
@@ -11,29 +10,23 @@ img{
     justify-content: space-evenly;
 } */
 
-.icons{
-    margin: 1rem !important;
-  
+.icons {
+  margin: 1rem !important;
 }
 
-
-
-.downloadBtn{
-    color: #2B2D42;
-    margin: 0 1rem !important;
-    background: #8D99AE !important;
+.downloadBtn {
+  color: #2b2d42;
+  margin: 0 1rem !important;
+  background: #8d99ae !important;
 }
 
-.link{
-    background-color: "#98c1d9" !important;
+.link {
+  background-color: "#98c1d9" !important;
 }
-
 
 @media only screen and (max-width: 350px) {
-   button{
-       font-size: .7rem !important;
-       padding: .6rem !important;
-   }
-   
+  button {
+    font-size: 0.7rem !important;
+    padding: 0.6rem !important;
   }
-
+}

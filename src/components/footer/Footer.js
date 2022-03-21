@@ -4,13 +4,13 @@ import styles from "./styles.module.css";
 const Footer = () => {
   return (
     <footer>
-      <MDBContainer fluid className={styles.footer}>
+      <MDBContainer fluid className={styles.footerContainer}>
      
         <p>Made by Ibrahim Al-Quraishi</p>
 
-        <Link to="https://github.com/ibrahimaq">
+        <a href="https://github.com/ibrahimaq" rel="noreferrer" target="_blank">
           <MDBIcon fab icon="github" />
-        </Link>
+        </a>
    
       </MDBContainer>
     </footer>
