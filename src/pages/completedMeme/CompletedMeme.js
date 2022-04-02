@@ -29,64 +29,6 @@ const CompletedMeme = () => {
           />
         </MDBCol>
       </MDBRow>
-      <MDBRow className="justify-content-center my-4">
-        <MDBCol
-          sm="12"
-          md="6"
-          lg="4"
-          className="d-flex flex-row justify-content-evenly"
-        >
-          <MDBBtn
-            size="lg"
-            floating
-            style={{ backgroundColor: "#3b5998" }}
-            href="#"
-            className={styles.icon}
-          >
-            <MDBIcon fab icon="facebook" size="" />
-          </MDBBtn>
-
-          <MDBBtn
-            size="lg"
-            floating
-            style={{ backgroundColor: "#55acee" }}
-            href="#"
-            className={styles.icon}
-          >
-            <MDBIcon fab icon="twitter" size="sm" />
-          </MDBBtn>
-
-          <MDBBtn
-            size="lg"
-            floating
-            style={{ backgroundColor: "#FF5700" }}
-            href="#"
-            className={styles.icon}
-          >
-            <MDBIcon fab icon="reddit" size="sm" />
-          </MDBBtn>
-
-          <MDBBtn
-            size="lg"
-            floating
-            style={{ backgroundColor: "#E60023" }}
-            href="#"
-            className={styles.icon}
-          >
-            <MDBIcon fab icon="pinterest" size="sm" />
-          </MDBBtn>
-
-          <MDBBtn
-            size="lg"
-            floating
-            style={{ backgroundColor: "#ac2bac" }}
-            href="#"
-            className={styles.icon}
-          >
-            <MDBIcon fab icon="instagram" size="sm" />
-          </MDBBtn>
-        </MDBCol>
-      </MDBRow>
 
       <MDBRow>
         <MDBCol className={styles.buttons}>
