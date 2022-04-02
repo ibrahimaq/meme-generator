@@ -12,8 +12,9 @@
   margin: auto 0;
 }
 
-p {
+.footer p {
   margin-bottom: 0;
+  color: white !important;
 }
 
 .footerContainer a {

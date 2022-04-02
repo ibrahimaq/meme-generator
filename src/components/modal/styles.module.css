@@ -27,13 +27,17 @@
 
 .closeIconContainer {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   overflow: visible;
   padding: .75rem .75rem;
 }
 
-h3, p{
-  color: #343a40;
+.h3, .rightPanel p{
+  color: #262626 !important;
+}
+
+.rightPanel p{
+  font-weight: 500;
 }
 img {
   max-height: 70vh;
@@ -64,4 +68,18 @@ input{
   .rightPanel form {
     width: 80%;
   }
+
+  .rightPanel p{
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
 }
+
+@media only screen and (max-width: 576px) {
+
+   .rightPanel p{
+    padding: .75rem 0;
+  }
+}
+
+

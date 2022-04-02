@@ -77,7 +77,7 @@ const Modal = ({ setIsModal, selectedMemeData }) => {
 
         <MDBRow>
           <MDBCol sm="6" className="text-center">
-            <h3 className="py-2">{selectedMemeData.name}</h3>
+            <h3 className={`${styles.h3} py-2`}>{selectedMemeData.name}</h3>
             <img
               src={selectedMemeData.url}
               alt={selectedMemeData.name}
