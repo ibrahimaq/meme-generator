@@ -5,20 +5,23 @@ const useFetch = (url) => {
 
 
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(null);
+  const [isError, setIsError] = useState(false);
   const [memes, setMemes] = useState(null);
 
     useEffect(()=>{
+      
         fetch(url)
          .then(res=>res.json())
          .then(res =>{
              const data = res.data.memes;
              setMemes(data);
              setIsLoading(false);
+             setIsError(false);
              
          })
          .catch(err=>{
              console.log(err);
+             setIsLoading(false);
              setIsError(true);
          })
     },[url])

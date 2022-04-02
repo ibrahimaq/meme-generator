@@ -1,15 +1,17 @@
-import { MDBContainer, MDBTypography } from "mdb-react-ui-kit";
 import styles from "./styles.module.css";
+import Header from "../header/Header"
+import Footer from "../footer/Footer"
+
+
 const Layout = ({ children }) => {
   return (
-    <>
-      <MDBContainer fluid className={`${styles.BgImage}`}>
-        <div className="d-flex flex-column align-items-center justify-content-center my-4">
-          <MDBTypography tag="h1">Meme Generator</MDBTypography>
-        </div>
-      </MDBContainer>
-      {children}
-    </>
+    <div className={styles.container}>
+      <Header />
+      <div className={styles.content}>
+        {children}
+      </div>
+      <Footer />
+    </div>
   );
 };
 

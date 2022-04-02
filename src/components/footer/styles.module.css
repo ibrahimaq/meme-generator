@@ -1,17 +1,15 @@
-footer {
+.footer{
+  margin-top: 1.5rem;
+  min-height: 7vh;
   background-color: #262626;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  
+  display: flex;
 }
-
 .footerContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 5vh;
+  margin: auto 0;
 }
 
 p {

@@ -11,13 +11,10 @@ import {
 
 const CompletedMeme = () => {
   const { state } = useLocation();
-  // const navigate = useNavigate();
 
-
-  // DOWNLOAD MEME //
-  const download = (e) => {
-    e.preventDefault();
-    downloadImage(e);
+  //DOWNLOAD MEME
+  const handleDownload = () => {
+    downloadImage(state.data.url);
   };
 
   return (
@@ -25,13 +22,11 @@ const CompletedMeme = () => {
       <h4 className="text-center">Your meme is ready!</h4>
       <MDBRow>
         <MDBCol className="d-flex flex-column align-items-center">
-        
-            <img
-              src={state.data.url}
-              alt="Custom meme"
-              className="figure-img img-fluid z-depth-1 my-3"
-            />
-         
+          <img
+            src={state.data.url}
+            alt="Custom meme"
+            className="figure-img img-fluid z-depth-1 my-3"
+          />
         </MDBCol>
       </MDBRow>
       <MDBRow className="justify-content-center my-4">
@@ -61,7 +56,6 @@ const CompletedMeme = () => {
             <MDBIcon fab icon="twitter" size="sm" />
           </MDBBtn>
 
-          
           <MDBBtn
             size="lg"
             floating
@@ -71,7 +65,6 @@ const CompletedMeme = () => {
           >
             <MDBIcon fab icon="reddit" size="sm" />
           </MDBBtn>
-
 
           <MDBBtn
             size="lg"
@@ -96,17 +89,15 @@ const CompletedMeme = () => {
       </MDBRow>
 
       <MDBRow>
-        <MDBCol className="d-flex justify-content-center">
-          <a href={state.data.url} onClick={(e) => download(e)}>
-            <MDBBtn className={styles.downloadBtn}>
-              Save meme
-              <MDBIcon fas icon="download" className="ms-1" />
-            </MDBBtn>
-          </a>
+        <MDBCol className={styles.buttons}>
+          <MDBBtn className={styles.downloadBtn} onClick={handleDownload}>
+            Save meme
+            <MDBIcon fas icon="download" className="ms-1" />
+          </MDBBtn>
 
           <Link
             to="/meme-generator"
-            className="btn rounded hover-shadow"
+            className={`btn rounded hover-shadow ${styles.makeAnotherBtn}`}
             style={{ backgroundColor: "#98c1d9", color: "#262626" }}
           >
             Make another meme

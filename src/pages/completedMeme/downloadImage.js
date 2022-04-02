@@ -1,7 +1,6 @@
 
-
-const downloadImage = (e)=>{
-    fetch(e.target.href, {
+const downloadImage = (imgURL)=>{
+    fetch(imgURL, {
         method: "GET",
         headers: {},
       })

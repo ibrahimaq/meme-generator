@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Modal from "../modal/Modal";
+import Modal from "../../components/modal/Modal";
 import useFetch from "../../useFetch";
 import styles from "./styles.module.css";
 import Masonry from "react-masonry-css";
@@ -7,8 +7,8 @@ import { MDBContainer, MDBTypography } from "mdb-react-ui-kit";
 
 const Home = () => {
   //fetching memes from API
-  const { memes, isLoading } = useFetch("https://api.imgflip.com/get_memes");
-
+  const { memes, isLoading, isError } = useFetch("https://api.imgflip.com/get_memes");
+  
   //modal state
   const [isModal, setIsModal] = useState(false);
 
@@ -32,10 +32,15 @@ const Home = () => {
   };
 
   return (
-    <section className="my-5">
-      {isLoading ? (
-        <div>isLoading..</div>
-      ) : (
+    <section>
+      {isError && <p style={{color: "#ffffff"}}>Sorry we were unable to fetch memes at the moment. Refresh or try again later.</p>}
+      {isLoading && (
+        <MDBContainer style={{color: "#ffffff"}}>
+          <p>Loading...</p>
+        </MDBContainer>
+      ) }
+      {memes && 
+      (
         <MDBContainer>
           <h4 className="text-center lead my-4">Select a meme to begin</h4>
           <Masonry

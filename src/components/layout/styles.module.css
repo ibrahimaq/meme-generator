@@ -1,4 +1,10 @@
+.container {
+  min-height: 100vh;
+  background-color: #2b2d42 !important;
+  display: flex;
+  flex-direction: column;
+}
 
-.BgImage > div{
-    color: #EDF2F4 !important;
+.content {
+  flex-grow: 1;
 }
