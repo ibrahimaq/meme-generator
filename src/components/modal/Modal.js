@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import usePost from "../../usePost";
 import styles from "./styles.module.css";
 import {
@@ -36,7 +36,7 @@ const Modal = ({ setIsModal, selectedMemeData }) => {
   //////// SUBMIT /////////
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     ///creating new form and populating it with details
     const formData = new FormData();
     formData.append("template_id", selectedMemeData.id);
@@ -48,66 +48,79 @@ const Modal = ({ setIsModal, selectedMemeData }) => {
 
     //posting request to API
     getMeme(formData);
-    
   };
 
+  //user can close modal if clicked "outside" modal (click is on modal background layer)
+  const modalBg = useRef();
+  const handleClose = (e) => {
+    if (e.target === modalBg.current) {
+      setIsModal(false);
+    }
+  };
 
   return (
-    <div className={styles.modalDarkBg}>
-      <div className={styles.modal}>
-        <div className={styles.closeIconContainer}>
+    <div
+      ref={modalBg}
+      className={styles.modalDarkBg}
+      onClick={(e) => {
+        handleClose(e);
+      }}
+    >
+      <MDBContainer className={styles.modal}>
+        <MDBRow className="f-flex justify-content-end">
           <MDBBtn
-            className={styles.closeIcon}
+            className="btn-close p-2 me-2 mt-2"
+            color="none"
             onClick={() => setIsModal(false)}
-          >
-            X
-          </MDBBtn>
-        </div>
+          ></MDBBtn>
+        </MDBRow>
 
-        <MDBContainer>
-          <MDBRow className="py-4">
-            <MDBCol sm="6" className="text-center">
-              <h3>{selectedMemeData.name}</h3>
-              <img
-                src={selectedMemeData.url}
-                alt={selectedMemeData.name}
-                className="figure-img img-fluid z-depth-1"
-              />
-            </MDBCol>
-            {/* {right panel} */}
-            <MDBCol sm="6">
-              <div className={styles.rightPanel}>
-                <form onSubmit={handleSubmit}>
-                  <p className="text-center">Fill out at least one box before generating meme</p>
-                  <div className={styles.inputGroup}>
-                    {Array.from(
-                      Array(selectedMemeData.box_count),
-                      (field, index) => (
-                        <MDBInput
-                          label={`Textbox ${index + 1}`}
-                          type="text"
-                          required
-                          key={index}
-                          id={selectedMemeData.id}
-                          className="my-1 my-sm-4 my-md-5"
-                          onChange={(e) => {
-                            handleChange(e, index);
-                          }}
-                        />
-                      )
-                    )}
-                  </div>
-                  {!isFetching ? (
-                    <MDBBtn className={styles.submitBtn} type="submit">Make my meme</MDBBtn>
-                  ) : (
-                    <MDBBtn className={styles.submitBtn}>...baking</MDBBtn>
+        <MDBRow>
+          <MDBCol sm="6" className="text-center">
+            <h3 className="py-2">{selectedMemeData.name}</h3>
+            <img
+              src={selectedMemeData.url}
+              alt={selectedMemeData.name}
+              className="figure-img img-fluid z-depth-1"
+            />
+          </MDBCol>
+          {/* {right panel} */}
+          <MDBCol sm="6">
+            <div className={styles.rightPanel}>
+              <form onSubmit={handleSubmit}>
+                <p className="text-center">
+                  Fill out at least one box before generating meme
+                </p>
+                <div className={styles.inputGroup}>
+                  {Array.from(
+                    Array(selectedMemeData.box_count),
+                    (field, index) => (
+                      <MDBInput
+                        label={`Textbox ${index + 1}`}
+                        type="text"
+                        required
+                        key={index}
+                        id={selectedMemeData.id}
+                        className="my-1 my-sm-4 my-md-5"
+                        onChange={(e) => {
+                          handleChange(e, index);
+                        }}
+                      />
+                    )
                   )}
-                </form>
-              </div>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-      </div>
+                </div>
+                {!isFetching ? (
+                  <MDBBtn className={styles.submitBtn} type="submit">
+                    Make my meme
+                  </MDBBtn>
+                ) : (
+                  <MDBBtn className={styles.submitBtn}>...baking</MDBBtn>
+                )}
+              </form>
+            </div>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
     </div>
   );
 };

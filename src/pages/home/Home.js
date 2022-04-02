@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Modal from "../../components/modal/Modal";
 import useFetch from "../../useFetch";
 import styles from "./styles.module.css";
 import Masonry from "react-masonry-css";
-import { MDBContainer, MDBTypography } from "mdb-react-ui-kit";
+import { MDBContainer} from "mdb-react-ui-kit";
 
 const Home = () => {
   //fetching memes from API

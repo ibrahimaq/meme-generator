@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import downloadImage from "./downloadImage";
 import {
